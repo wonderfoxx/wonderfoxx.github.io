@@ -3,561 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RUCIS - Распродажа оборудования АББ</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-	<style>
+    <title>RUCIS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
+        
         body {
-            background-color: #f8f9fa;
-            color: #333;
-            line-height: 1.6;
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #ffffff;
+            color: #000000;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            line-height: 1.2;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-
+        
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
         }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #1a3c8b 0%, #2a56c6 100%);
-            color: white;
-            padding: 1.5rem 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
+        
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            margin-bottom: 80px;
         }
-
-        .logo-icon {
-            font-size: 2.5rem;
-            color: #4fc3f7;
-        }
-
-        .logo-text h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .logo-text p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        .contact-header {
-            text-align: right;
-        }
-
-        .contact-header a {
-            color: white;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-left: 20px;
+        
+        .logo-line {
+            font-size: 18px;
+            letter-spacing: 3px;
             font-weight: 500;
-            transition: opacity 0.3s;
-        }
-
-        .contact-header a:hover {
+            color: #000000;
             opacity: 0.8;
         }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 5rem 0;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .hero h2 {
-            font-size: 2.8rem;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            opacity: 0.95;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: #ff9800;
-            color: white;
-            padding: 16px 40px;
-            font-size: 1.2rem;
+        
+        .main-text {
+            font-size: 64px;
             font-weight: 600;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
-            border: none;
-            cursor: pointer;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            color: #000000;
         }
-
-        .cta-button:hover {
-            background-color: #f57c00;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
+        
+        .sub-text {
+            font-size: 24px;
+            font-weight: 400;
+            color: #666666;
+            margin-top: 40px;
+            letter-spacing: 0.5px;
         }
-
-        /* Content */
-        .content-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 4rem;
+        
+        .divider {
+            height: 1px;
+            width: 120px;
+            background: #d2d2d7;
+            margin: 100px auto 0;
+            opacity: 0.5;
         }
-
-        .info-card, .equipment-list {
-            background-color: white;
-            border-radius: 12px;
-            padding: 2.5rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .section-title {
-            color: #1a3c8b;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #ff9800;
-            display: inline-block;
-        }
-
-        .contact-info p {
-            margin-bottom: 1.2rem;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .contact-info i {
-            color: #1a3c8b;
-            margin-right: 12px;
-            margin-top: 4px;
-            min-width: 20px;
-        }
-
-        .equipment-item {
-            background-color: #f8f9fa;
-            border-left: 4px solid #1a3c8b;
-            padding: 1.2rem;
-            margin-bottom: 1.2rem;
-            border-radius: 0 8px 8px 0;
-            transition: transform 0.3s;
-        }
-
-        .equipment-item:hover {
-            transform: translateX(5px);
-        }
-
-        .equipment-item h3 {
-            color: #1a3c8b;
-            margin-bottom: 8px;
-        }
-
-        .status {
-            display: inline-block;
-            background-color: #4caf50;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-top: 8px;
-        }
-
-        /* Features */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .feature-card {
-            background-color: white;
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            color: #1a3c8b;
-            margin-bottom: 1.2rem;
-        }
-
-        .feature-card h3 {
-            color: #1a3c8b;
-            margin-bottom: 1rem;
-        }
-
-        /* Email Link Section */
-        .email-request {
-            background-color: white;
-            border-radius: 12px;
-            padding: 3rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin-bottom: 4rem;
-            text-align: center;
-        }
-
-        .email-request h2 {
-            color: #1a3c8b;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .email-request p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            color: #555;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .email-link {
-            display: inline-block;
-            background-color: #1a3c8b;
-            color: white;
-            padding: 18px 50px;
-            font-size: 1.3rem;
-            font-weight: 600;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(26, 60, 139, 0.3);
-        }
-
-        .email-link:hover {
-            background-color: #2a56c6;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(26, 60, 139, 0.4);
-        }
-
-        .email-link i {
-            margin-right: 10px;
-        }
-
-        .instructions {
-            background-color: #f0f7ff;
-            border-left: 4px solid #1a3c8b;
-            padding: 1.5rem;
-            margin-top: 2rem;
-            border-radius: 0 8px 8px 0;
-            text-align: left;
-        }
-
-        .instructions h4 {
-            color: #1a3c8b;
-            margin-bottom: 10px;
-        }
-
-        .instructions ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        .instructions li {
-            margin-bottom: 8px;
-            padding-left: 25px;
-            position: relative;
-        }
-
-        .instructions li:before {
-            content: "✓";
-            color: #4caf50;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #1a3c8b;
-            color: white;
-            padding: 3rem 0 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-
-        .footer-logo h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-contact p {
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .content-section {
-                grid-template-columns: 1fr;
-            }
-            
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 20px;
-            }
-            
-            .contact-header a {
-                margin: 0 10px;
-            }
-            
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-        }
-
+        
         @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 2.2rem;
+            .main-text {
+                font-size: 48px;
             }
             
-            .hero p {
-                font-size: 1.1rem;
+            .sub-text {
+                font-size: 20px;
             }
             
-            .footer-content {
-                flex-direction: column;
-                gap: 2rem;
+            .logo {
+                margin-bottom: 60px;
             }
             
-            .contact-header {
-                text-align: center;
+            .divider {
+                margin-top: 80px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .main-text {
+                font-size: 36px;
             }
             
-            .email-link {
-                padding: 15px 30px;
-                font-size: 1.1rem;
+            .sub-text {
+                font-size: 18px;
             }
+            
+            .logo-line {
+                font-size: 16px;
+                letter-spacing: 2px;
+            }
+            
+            body {
+                padding: 30px 20px;
+            }
+        }
+        
+        /* Анимации */
+        .fade-in {
+            animation: fadeIn 1.2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+            opacity: 0;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .logo {
+            animation-delay: 0.2s;
+        }
+        
+        .main-text {
+            animation-delay: 0.4s;
+        }
+        
+        .sub-text {
+            animation-delay: 0.8s;
+        }
+        
+        .divider {
+            animation-delay: 1.2s;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-industry"></i>
-                    </div>
-                    <div class="logo-text">
-                        <h1>RUCIS</h1>
-                        <p>Распродажа оборудования АББ</p>
-                    </div>
-                </div>
-                <div class="contact-header">
-                    <a href="tel:+74957772220"><i class="fas fa-phone-alt"></i> +7 495 777-22-20</a>
-                    <a href="mailto:sale@rucis.ru"><i class="fas fa-envelope"></i> sale@rucis.ru</a>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h2>Крупная распродажа оборудования АББ</h2>
-            <p>Ликвидация складских остатков. Автоматика, приводная техника, электрооборудование от ведущего производителя со скидками до 40%</p>
-            <a href="#email-request" class="cta-button">Получить каталог и цены</a>
-        </div>
-    </section>
-
-    <!-- Main Content -->
     <div class="container">
-        <div class="content-section">
-            <!-- Contact Information -->
-            <div class="info-card">
-                <h2 class="section-title">Контакты</h2>
-                <div class="contact-info">
-                    <p><i class="fas fa-map-marker-alt"></i> <strong>Адрес:</strong> 117335, г. Москва, вн. тер. г. муниципальный округ Академический, пр-кт Нахимовский, д. 58</p>
-                    <p><i class="fas fa-phone-alt"></i> <strong>Телефон:</strong> +7 495 777-22-20</p>
-                    <p><i class="fas fa-envelope"></i> <strong>Email:</strong> sale@rucis.ru</p>
-                    <p><i class="fas fa-clock"></i> <strong>Режим работы:</strong> Пн-Пт: 9:00-18:00, Сб: 10:00-15:00</p>
-                    <p><i class="fas fa-user-tie"></i> <strong>Контактное лицо:</strong> Иванов Алексей Петрович</p>
-                </div>
-            </div>
-
-            <!-- Equipment List -->
-            <div class="equipment-list">
-                <h2 class="section-title">Доступное оборудование</h2>
-                <div class="equipment-item">
-                    <h3>Частотные преобразователи АБВ</h3>
-                    <p>Мощность: 0.75-500 кВт. Новое, оригинальная упаковка.</p>
-                    <span class="status">В наличии</span>
-                </div>
-                <div class="equipment-item">
-                    <h3>Автоматические выключатели</h3>
-                    <p>Серии S, T, U. Номиналы от 16А до 1600А.</p>
-                    <span class="status">Ограниченное количество</span>
-                </div>
-                <div class="equipment-item">
-                    <h3>Контакторы и пускатели</h3>
-                    <p>Серии А, AF, AX. Комплекты с тепловыми реле.</p>
-                    <span class="status">В наличии</span>
-                </div>
-                <div class="equipment-item">
-                    <h3>Системы управления</h3>
-                    <p>ПЛК AC500, панели оператора, модули ввода-вывода.</p>
-                    <span class="status">По запросу</span>
-                </div>
-            </div>
+        <div class="logo fade-in">
+            <div class="logo-line">RUCIS</div>
         </div>
-
-        <!-- Features -->
-        <div class="features">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-tags"></i>
-                </div>
-                <h3>Выгодные цены</h3>
-                <p>Скидки до 40% от рыночной стоимости. Специальные условия для оптовых покупателей.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-certificate"></i>
-                </div>
-                <h3>Гарантия качества</h3>
-                <p>Всё оборудование новое, с сохранением заводской гарантии. Оригинальная упаковка.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-shipping-fast"></i>
-                </div>
-                <h3>Быстрая доставка</h3>
-                <p>Отправка в день заказа. Доставка по Москве и регионам РФ. Самовывоз доступен.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-file-contract"></i>
-                </div>
-                <h3>Полный пакет документов</h3>
-                <p>Товарные накладные, счета-фактуры, сертификаты, паспорта оборудования.</p>
-            </div>
+        
+        <div class="main-text fade-in">
+            Распродажа оборудования<br>производства ABB
         </div>
-
-        <!-- Email Request Section -->
-        <div class="email-request" id="email-request">
-            <h2>Запросить каталог и цены</h2>
-            <p>Нажмите кнопку ниже, чтобы отправить запрос на получение полного каталога оборудования с актуальными ценами. Мы ответим в течение 1 рабочего дня.</p>
-            
-            <a href="mailto:sale@rucis.ru?subject=Запрос каталога оборудования АББ от RUCIS&body=Здравствуйте!%0D%0A%0D%0AПрошу выслать каталог оборудования АББ с актуальными ценами.%0D%0A%0D%0A---%0D%0AМоя информация:%0D%0AИмя: %0D%0AКомпания: %0D%0AТелефон: %0D%0AEmail: %0D%0A%0D%0AИнтересует оборудование:%0D%0A[ ] Частотные преобразователи%0D%0A[ ] Автоматические выключатели%0D%0A[ ] Контакторы и пускатели%0D%0A[ ] Системы управления%0D%0A[ ] Другое: %0D%0A%0D%0AКомментарий или особые требования:%0D%0A%0D%0A---%0D%0A%0D%0AС уважением," class="email-link">
-                <i class="fas fa-envelope"></i> Написать нам на sale@rucis.ru
-            </a>
-            
-            <div class="instructions">
-                <h4>Как это работает:</h4>
-                <ul>
-                    <li>Нажмите кнопку выше — откроется ваш почтовый клиент</li>
-                    <li>Заполните шаблон письма своей информацией</li>
-                    <li>Отправьте письмо — мы получим его сразу</li>
-                    <li>Мы ответим с каталогом и ценами в течение дня</li>
-                </ul>
-            </div>
+        
+        <div class="sub-text fade-in">
+            Следите за обновлениями
         </div>
+        
+        <div class="divider fade-in"></div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h3>RUCIS</h3>
-                    <p>Распродажа оборудования АББ</p>
-                </div>
-                <div class="footer-contact">
-                    <p><i class="fas fa-map-marker-alt"></i> Нахимовский пр-кт, д. 58, Москва</p>
-                    <p><i class="fas fa-phone-alt"></i> +7 495 777-22-20</p>
-                    <p><i class="fas fa-envelope"></i> sale@rucis.ru</p>
-                    <p><i class="fas fa-clock"></i> Пн-Пт: 9:00-18:00</p>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2023 RUCIS. Распродажа оборудования производства компании АББ. Все права защищены.</p>
-            </div>
-        </div>
-    </footer>
-
     <script>
-        // Плавный скролл
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Динамическое обновление года в футере
-        document.addEventListener('DOMContentLoaded', function() {
-            const yearSpan = document.querySelector('.copyright p');
-            if(yearSpan) {
-                yearSpan.innerHTML = yearSpan.innerHTML.replace('2023', new Date().getFullYear());
-            }
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s ease';
+                document.body.style.opacity = '1';
+            }, 100);
         });
     </script>
 </body>
