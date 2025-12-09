@@ -3,157 +3,558 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RUCIS</title>
+    <title>Информационный сайт для партнёров</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23f5f5f7%22/><text x=%2250%22 y=%2270%22 text-anchor=%22middle%22 font-size=%2260%22 font-family=%22Arial%22 fill=%22%23000000%22>R</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23f5f5f7%22/><text x=%2250%22 y=%2270%22 text-anchor=%22middle%22 font-size=%2260%22 font-family=%22Arial%22 fill=%22%23000000%22>R</text></svg>">
     <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #fbfbfd;
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --text-tertiary: #6e6e73;
+            --accent: #0071e3;
+            --accent-hover: #0077ed;
+            --border: #d2d2d7;
+            --border-light: #e8e8ed;
+            --radius: 12px;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: #ffffff;
-            color: #000000;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
             line-height: 1.2;
             font-weight: 400;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        
+
         .container {
-            max-width: 900px;
+            max-width: 1200px;
             width: 100%;
-            text-align: center;
+            flex: 1;
         }
-        
-        .logo {
-            margin-bottom: 80px;
-        }
-        
-        .logo-line {
-            font-size: 18px;
-            letter-spacing: 3px;
-            font-weight: 500;
-            color: #000000;
-            opacity: 0.8;
-        }
-        
-        .main-text {
-            font-size: 64px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            line-height: 1.1;
-            color: #000000;
-        }
-        
-        .sub-text {
-            font-size: 24px;
-            font-weight: 400;
-            color: #666666;
-            margin-top: 40px;
-            letter-spacing: 0.5px;
-        }
-        
-        .divider {
-            height: 1px;
-            width: 120px;
-            background: #d2d2d7;
-            margin: 100px auto 0;
-            opacity: 0.5;
-        }
-        
-        @media (max-width: 768px) {
-            .main-text {
-                font-size: 48px;
-            }
-            
-            .sub-text {
-                font-size: 20px;
-            }
-            
-            .logo {
-                margin-bottom: 60px;
-            }
-            
-            .divider {
-                margin-top: 80px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .main-text {
-                font-size: 36px;
-            }
-            
-            .sub-text {
-                font-size: 18px;
-            }
-            
-            .logo-line {
-                font-size: 16px;
-                letter-spacing: 2px;
-            }
-            
-            body {
-                padding: 30px 20px;
-            }
-        }
-        
-        /* Анимации */
-        .fade-in {
-            animation: fadeIn 1.2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
-            opacity: 0;
-        }
-        
+
         @keyframes fadeIn {
             to {
                 opacity: 1;
             }
         }
-        
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
         .logo {
-            animation-delay: 0.2s;
+            flex-shrink: 0;
+            opacity: 0;
+            animation: fadeIn 1.2s cubic-bezier(0.22, 0.61, 0.36, 1) 0.2s forwards;
         }
-        
-        .main-text {
-            animation-delay: 0.4s;
+
+        .logo img {
+            height: 100px;
+            width: auto;
         }
-        
-        .sub-text {
-            animation-delay: 0.8s;
+
+        .header-title {
+            font-size: 32px;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--text-primary);
+            opacity: 0.95;
+            max-width: 600px;
+            opacity: 0;
+            animation: fadeIn 1.2s cubic-bezier(0.22, 0.61, 0.36, 1) 0.4s forwards;
         }
-        
-        .divider {
-            animation-delay: 1.2s;
+
+        .content {
+            text-align: left;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+            opacity: 0;
+            animation: fadeIn 1.2s cubic-bezier(0.22, 0.61, 0.36, 1) 0.6s forwards;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            opacity: 0.95;
+            text-align: right;
+        }
+
+        .contact-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            text-align: right;
+        }
+
+        .contact-item {
+            margin-bottom: 16px;
+        }
+
+        .contact-label {
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-tertiary);
+            margin-bottom: 4px;
+            display: block;
+            text-align: right;
+        }
+
+        .contact-value {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--text-primary);
+            line-height: 1.5;
+            opacity: 0.95;
+            text-align: right;
+        }
+
+        .contact-value a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .contact-value a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
+        .sale-card {
+            background-color: var(--bg-secondary);
+            border-radius: var(--radius);
+            padding: 40px;
+            border: 1px solid var(--border-light);
+        }
+
+        .sale-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 24px;
+        }
+
+        .sale-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.3;
+            opacity: 0.95;
+        }
+
+        .sale-date {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        .documents-section {
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .documents-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            opacity: 0.95;
+        }
+
+        .documents-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .document-link {
+            display: flex;
+            align-items: center;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 400;
+            transition: color 0.2s ease;
+            padding: 6px 0;
+        }
+
+        .document-link:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
+        .document-icon {
+            margin-right: 12px;
+            font-size: 18px;
+        }
+
+        .document-info {
+            font-size: 14px;
+            color: var(--text-tertiary);
+            margin-left: 10px;
+        }
+
+        .sale-subtitle {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+            opacity: 0.95;
+        }
+
+        .sale-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .detail-item {
+            margin-bottom: 20px;
+        }
+
+        .detail-label {
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-tertiary);
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .detail-value {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--text-primary);
+            line-height: 1.5;
+            opacity: 0.95;
+        }
+
+        .detail-value a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .detail-value a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
+        .additional-info {
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--text-tertiary);
+            line-height: 1.5;
+            margin-top: 28px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .additional-info p {
+            margin-bottom: 16px;
+        }
+
+        footer {
+            margin-top: 80px;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-tertiary);
+            line-height: 1.5;
+            border-top: 1px solid var(--border);
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        footer a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 900px;
+            }
+            
+            .content {
+                max-width: 800px;
+            }
+            
+            .header-title {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                max-width: 700px;
+            }
+            
+            .content {
+                max-width: 600px;
+            }
+            
+            .header-title {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 30px;
+                margin-bottom: 60px;
+            }
+            
+            .logo img {
+                height: 80px;
+            }
+            
+            .header-title {
+                font-size: 22px;
+                max-width: 100%;
+            }
+            
+            .content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                max-width: 100%;
+            }
+            
+            .sale-card {
+                padding: 30px;
+            }
+            
+            .sale-header {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .sale-details {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            
+            .section-title {
+                text-align: left;
+            }
+            
+            .contact-grid {
+                text-align: left;
+            }
+            
+            .contact-label,
+            .contact-value {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 30px 20px;
+            }
+            
+            .header {
+                margin-bottom: 40px;
+            }
+            
+            .logo img {
+                height: 70px;
+            }
+            
+            .header-title {
+                font-size: 20px;
+            }
+            
+            .sale-card {
+                padding: 24px;
+            }
+            
+            .sale-title {
+                font-size: 22px;
+            }
+            
+            .sale-subtitle {
+                font-size: 18px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="logo fade-in">
-            <div class="logo-line">RUCIS</div>
+        <div class="header">
+            <div class="logo">
+                <img src="rucis-logo.png" alt="RUCIS" width="250" height="100">
+            </div>
+            <div class="header-title">
+                Информационный сайт для партнёров
+            </div>
         </div>
         
-        <div class="main-text fade-in">
-            Распродажа оборудования<br>производства ABB
+        <div class="content">
+            <div>
+                <section>
+                    <div class="sale-card">
+                        <div class="sale-header">
+                            <h2 class="sale-title">Распродажа оборудования</h2>
+                            <div class="sale-date">08.12.2025</div>
+                        </div>
+                        
+                        <div class="documents-section">
+                            <h4 class="documents-title">Документы</h4>
+                            <div class="documents-list">
+                                <a href="Информационное_письмо_РУЦИС.pdf" class="document-link" download>
+                                    <span class="document-icon">📄</span>
+                                    Информационное письмо
+                                    <span class="document-info">PDF • Полная версия</span>
+                                </a>
+                                
+                                <a href="Перечень_палет_08.12.2025_v1.xlsx" class="document-link" download>
+                                    <span class="document-icon">📋</span>
+                                    Перечень палет (лотов)
+                                    <span class="document-info">Excel • 08.12.2025 • v1</span>
+                                </a>
+                                
+                                <a href="Запрос_предложений_прил2.rtf" class="document-link" download>
+                                    <span class="document-icon">📝</span>
+                                    Форма заявки
+                                    <span class="document-info">RTF • Приложение 2</span>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <h3 class="sale-subtitle">Условия участия в закупке</h3>
+                        
+                        <div class="sale-details">
+                            <div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Период приёма заявок</span>
+                                    <div class="detail-value">
+                                        09.12.2025 (12:00)<br>
+                                        —<br>
+                                        19.12.2025 (12:00)
+                                    </div>
+                                </div>
+                                
+                                <div class="detail-item">
+                                    <span class="detail-label">Рассмотрение заявок</span>
+                                    <div class="detail-value">до 23.12.2025</div>
+                                </div>
+                                
+                                <div class="detail-item">
+                                    <span class="detail-label">Отправка заявок</span>
+                                    <div class="detail-value">
+                                        <a href="mailto:contact_center@rucis.ru">contact_center@rucis.ru</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Оплата</span>
+                                    <div class="detail-value">100% предоплата в течение 3 рабочих дней</div>
+                                </div>
+                                
+                                <div class="detail-item">
+                                    <span class="detail-label">Отгрузка</span>
+                                    <div class="detail-value">
+                                        Самовывоз со склада:<br>
+                                        142181, МО, г.о. Подольск, д. Бережки
+                                    </div>
+                                </div>
+                                
+                                <div class="detail-item">
+                                    <span class="detail-label">Гарантия</span>
+                                    <div class="detail-value">Без гарантии, «как есть»</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="additional-info">
+                            <p>* Указанные условия не являются публичной офертой</p>
+                            <p>По любым вопросам и предложениям обращайтесь по телефону <a href="tel:+74957772220">+7 495 777 2220</a> или электронной почте <a href="mailto:contact_center@rucis.ru">contact_center@rucis.ru</a></p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div>
+                <section>
+                    <h2 class="section-title">Контакты</h2>
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <div class="contact-value">ООО «РУЦИС»</div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <span class="contact-label">Адрес</span>
+                            <div class="contact-value">
+                                117335, Москва<br>
+                                Нахимовский проспект, д.58
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <span class="contact-label">Телефон</span>
+                            <div class="contact-value">
+                                <a href="tel:+74957772220">+7 495 777 2220</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <span class="contact-label">Электронная почта</span>
+                            <div class="contact-value">
+                                <a href="mailto:contact_center@rucis.ru">contact_center@rucis.ru</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
-        
-        <div class="sub-text fade-in">
-            Следите за обновлениями
-        </div>
-        
-        <div class="divider fade-in"></div>
     </div>
+
+    <footer>
+        <p>© <span id="current-year">2025</span> ООО «РУЦИС». <a href="mailto:contact_center@rucis.ru">contact_center@rucis.ru</a></p>
+        <p style="font-size: 12px; margin-top: 10px; color: var(--text-secondary);">Информация на сайте не является публичной офертой</p>
+    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -162,6 +563,8 @@
                 document.body.style.transition = 'opacity 0.5s ease';
                 document.body.style.opacity = '1';
             }, 100);
+            
+            document.getElementById('current-year').textContent = new Date().getFullYear();
         });
     </script>
 </body>
